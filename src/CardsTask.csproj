@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\CardsTaskException.cs" />
+    <Compile Include="Models\RouteItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RouteBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
