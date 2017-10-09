@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using CardsTask.Exceptions;
 using CardsTask.Models;
@@ -11,6 +12,11 @@ namespace CardsTask.Services
 	{
 		public IEnumerable<RouteItem> BuildRoute(IEnumerable<RouteItem> unorderedRoute)
 		{
+			if (unorderedRoute == null)
+			{
+				throw new ArgumentNullException(nameof(unorderedRoute));
+			}
+
 			var result = new List<RouteItem>();
 
 			var routes = new Dictionary<string, string>();

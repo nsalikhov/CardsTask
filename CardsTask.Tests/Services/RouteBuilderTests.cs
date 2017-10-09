@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 using CardsTask.Exceptions;
 using CardsTask.Models;
@@ -27,6 +28,13 @@ namespace CardsTask.Tests.Services
 		public void BuildRoute_EmptyRouteTest()
 		{
 			_target.BuildRoute(new RouteItem[0]);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentNullException))]
+		public void BuildRoute_NullArgumentTest()
+		{
+			_target.BuildRoute(null);
 		}
 
 		[TestMethod]
