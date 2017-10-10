@@ -22,8 +22,10 @@ namespace CardsTask.Services
 			var routes = new Dictionary<string, string>();
 			var destinations = new HashSet<string>();
 
+			// Building a route map for fast determination of destination by departure
 			foreach (var routeItem in unorderedRoute)
 			{
+				// Avoiding route cycles and duplicates 
 				if (routes.ContainsKey(routeItem.Departure) || destinations.Contains(routeItem.Destination))
 				{
 					throw new CardsTaskException();
@@ -33,6 +35,7 @@ namespace CardsTask.Services
 				destinations.Add(routeItem.Destination);
 			}
 
+			// Finding start destination point
 			string currentCity = null;
 			foreach (var departure in routes.Keys)
 			{
@@ -49,6 +52,7 @@ namespace CardsTask.Services
 				throw new CardsTaskException();
 			}
 
+			// Route building
 			string tmp;
 			while (routes.TryGetValue(currentCity, out tmp))
 			{
